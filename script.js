@@ -30,16 +30,12 @@ const baseLayers = {
 // defining LayerGroups
 const layers = {
   autobahn: L.layerGroup(),
-  sonnenstunden: L.layerGroup(),
-  strahlenerg: L.layerGroup(),
   potentiell: L.layerGroup()
 }
 
 // GeoJsons
 const geoJsons = [
   { url: './data/a4_map.json', layer: layers.autobahn, style: { color: '#2a3384', weight: 1, fillOpacity: 0 }},
-  { url: './data/sonnenst.json', layer: layers.sonnenstunden, style: { color: '#f7a20e', weight: 3, fillOpacity: 0.5 }},
-  { url: './data/strahlenenerg.json', layer: layers.strahlenerg, style: { color: '#0fc464', weight: 3, fillOpacity: 0.5 }},
   { url: './data/potentiell.json', layer: layers.potentiell, style: function(feature) {
         switch (feature.properties.potenzielle_flaeche) {
             case 0.0: return {color: "#d87b17", weight: 3, fillOpacity: 0.9};
@@ -57,9 +53,7 @@ geoJsons.forEach(({ url, layer, style }) => {
 
 const overlayLayers = {
   "Autobahn 4": layers.autobahn,
-  "Potential PV Regions": layers.potentiell,
-  "Sun Hours": layers.sonnenstunden,
-  "Radiant Energy": layers.strahlenerg
+  "Potential PV Regions": layers.potentiell
 }
 
 const map = L.map('map', { 
